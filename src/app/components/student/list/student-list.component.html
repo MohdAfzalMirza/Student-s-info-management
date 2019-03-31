@@ -1,0 +1,95 @@
+<div class="w3-container">
+	<div class="w3-panel w3-round-small w3-teal">
+		<h3>Student List
+			<span style="margin-left: 30%;">Role: {{role}}</span>
+			<button [disabled]="!view" routerLink="/add" class="w3-button w3-green custom-button">
+				<i class="w3-medium  fa fa-plus"></i> Add New Student</button>
+		</h3>
+	</div>
+	<span *ngIf="!view">
+		<i class="w3-medium fa fa-search"></i> Filter By Aggregate Percentage :
+		<input class="" type="text" [(ngModel)]='filterData'>
+	</span>
+	<span *ngIf="view">
+		<i class="w3-medium fa fa-search"></i> Search By First Name :
+		<input class="" type="text" [(ngModel)]='filterData'>
+	</span>
+
+	<div class="w3-panel w3-green" *ngIf="(student | filter:filterData).length == 0">
+		<h3>Oh no</h3>
+		<p>No students found
+			<span *ngIf="filterData"> with search "{{filterData}}"</span>
+		</p>
+	</div>
+	<div class="w3-panel w3-light-grey w3-padding-16 w3-card-2" style="overflow-x:auto;" *ngIf="(student | filter:filterData | filter:filterData).length != 0">
+		<table class="w3-table w3-striped w3-bordered" id="myTable">
+			<tr>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-refresh"></i>
+					<br> Sr.No</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-file-text"></i>
+					<br>Roll No</th>
+				<!-- <th>ID</th> -->
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-user"></i>
+					<br>First Name</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-user"></i>
+					<br>Last Name</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-envelope-o"></i>
+					<br>Email</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-phone"></i>
+					<br>Phone</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-pencil"></i>
+					<br>Aggregate Percentage</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-ban"></i>
+					<br>Backlogs</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-file-text"></i>
+					<br>intermediate Percentage</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-file-text-o"></i>
+					<br>Metric Percentage</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-crop"></i>
+					<br>gap
+					<br>years</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-pencil"></i>
+					<br> Update</th>
+				<th style="text-align: center;">
+					<i class="w3-medium custom-icon fa fa-trash"></i>
+					<br> Delete</th>
+			</tr>
+			<tr *ngFor="let std of student | filter:filterData; index as i;" appHighlightStudent>
+
+				<td>{{i +1}}</td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.rollNo}} </td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.firstName}} </td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.lastName}}</td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.emailId}}</td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.phoneNo}}</td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.aggPer}}</td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.backlogs}}</td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.twelthOrDiplomaMarks}}</td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.tenthMarks}}</td>
+				<td style="text-align: center;" class="pointer" [routerLink]="['detail', std.sno]">{{std.gapYear}}</td>
+
+				<td>
+					<button [routerLink]="['update', std.sno]" class="w3-button w3-blue" [disabled]="!view">Update</button>
+				</td>
+				<td>
+					<button (click)="deleteStudent(i,std.sno);" class="w3-button w3-red" [disabled]="!view">Delete</button>
+				</td>
+			</tr>
+		</table>
+		<button class="w3-button w3-blue" (click)="download();">Download PDF</button>
+	</div>
+</div>
+<!-- <ngx-ui-loader></ngx-ui-loader> -->
+ 

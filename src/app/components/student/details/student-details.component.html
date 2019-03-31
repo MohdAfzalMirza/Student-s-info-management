@@ -1,0 +1,59 @@
+
+<div class="w3-container" *ngIf="studentDetail">
+	<div class="w3-panel w3-round-small w3-teal">
+		<h3>Student Details  <button routerLink="/" class="w3-button w3-green custom-button margin-right"> <i class="w3-medium fa fa-chevron-left"></i> Back</button></h3>
+	</div>
+	<div class=" w3-card custom-card"><br>
+		<h3 class="text-center">{{studentDetail.firstName}} {{studentDetail.lastName}}</h3>
+		<hr>
+		<table class="w3-table w3-bordered">
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-user"></i>First Name</td>
+				<td>: <b>{{studentDetail.firstName}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-user"></i>Last name</td>
+				<td>: <b>{{studentDetail.lastName}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-envelope-o"></i> Email Address</td>
+				<td>: <b>{{studentDetail.emailId}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-phone"></i> Phone</td>
+				<td>: <b>{{studentDetail.phoneNo}}</b></td>
+			</tr>
+
+			
+
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-file-text"></i> Roll No.</td>
+				<td>: <b>{{studentDetail.rollNo}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-pencil"></i>Aggregate Percentage.</td>
+				<td>: <b>{{studentDetail.aggPer}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-ban"></i> No of backlog.</td>
+				<td>: <b>{{studentDetail.backlogs}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-file-text"></i> intermediate or diploma Percentage.</td>
+				<td>: <b>{{studentDetail.twelthOrDiplomaMarks}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-file-text-o"></i> Metric Percentage</td>
+				<td>: <b>{{studentDetail.tenthMarks}}</b></td>
+			</tr>
+			<tr>
+				<td><i class="w3-medium custom-icon fa fa-crop"></i> No of gap years in study</td>
+				<td>: <b>{{studentDetail.gapYear}}</b></td>
+			</tr>
+
+
+
+
+		</table>
+	</div>
+</div>
