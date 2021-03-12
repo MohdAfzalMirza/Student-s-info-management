@@ -22,7 +22,7 @@
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
     "core-js": "^2.4.1",
-    "jspdf": "^1.5.2",
+    "jspdf": "^2.3.1",
     "jspdf-autotable": "^2.3.5",
     "ngx-toastr": "^6.3.0",
     "rxjs": "^5.4.2",
